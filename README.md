@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# StockFlow - Inventory Management MVP
 
-## Getting Started
+A simple multi-tenant SaaS inventory app built as part of a technical assessment.
 
-First, run the development server:
+**Live demo:** https://YAHAN-APNA-VERCEL-LINK
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- Sign up / login with email, password and organization name
+- Each organization's data is separate (multi-tenant)
+- Product CRUD (name, SKU, quantity, prices, low stock threshold)
+- Search products by name or SKU
+- Dashboard with total products, total quantity and low stock items
+- Settings page for default low stock threshold
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
+- Next.js (App Router, JavaScript)
+- PostgreSQL (Neon)
+- Tailwind CSS
+- bcrypt for password hashing, JWT cookie for sessions
+- Deployed on Vercel
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Run locally
+1. Clone the repo and run `npm install`
+2. Create a `.env.local` file with:
+   - `DATABASE_URL=your_postgres_connection_string`
+   - `JWT_SECRET=any_long_random_string`
+3. Run `npm run dev` and open http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+- Every database query is filtered by organization id, so one organization cannot see another's data.
+- Low stock rule: quantity <= product threshold (or the default threshold if the product has none).
