@@ -2,7 +2,7 @@
 
 A simple multi-tenant SaaS inventory app built as part of a technical assessment.
 
-**Live demo:** https://YAHAN-APNA-VERCEL-LINK
+**Live demo:** https://stockflow-inventory-tau.vercel.app/login
 
 ## Features
 - Sign up / login with email, password and organization name
